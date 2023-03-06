@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float horizontalInput;
-    private float verticalInput;
     private float xMovementRange;
     private float yMovementRange;
     private float waterCount;
@@ -14,9 +12,11 @@ public class PlayerController : MonoBehaviour
     private float waterLimit;
     private bool nearWater;
     private int seedCount;
+    private Vector3 movementVector;
 
     [SerializeField] private float horizontalSpeed;
     [SerializeField] private float verticalSpeed;
+    [SerializeField] private float playerSpeed;
 
     private GameObject waterSource;
     private Camera mainCamera;
@@ -27,13 +27,14 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        xMovementRange = 7.7f;
-        yMovementRange = 4.5f;
+        xMovementRange = 8f;
+        yMovementRange = 4.25f;
         waterCount = 0;
         waterTime = 0;
         waterLimit = 3;
         waterCollectTime = 1.5f;
         seedCount = 0;
+        playerSpeed = 200;
         playerRb = GetComponent<Rigidbody2D>();
         waterSource = GameObject.Find("Water Source");
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -43,15 +44,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         waterTime += Time.deltaTime;
-        horizontalInput = Input.GetAxis("Vertical");
-        verticalInput = Input.GetAxis("Horizontal");
-        PlayerMovement();
+        movementVector = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0).normalized;
         ConstrainPlayer();
         NearWater();
         if(Input.GetMouseButtonDown(0)){
             Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            // mousePosition.x -= Screen.width/2;
-            // mousePosition.y -= Screen.height/2;
             Debug.Log("Mouse Down");
             if(seedCount > 0){
                 Debug.Log("Shooting");
@@ -64,9 +61,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PlayerMovement(){
-        transform.Translate(Vector3.up * Time.deltaTime * horizontalInput * horizontalSpeed);
-        transform.Translate(Vector3.right * Time.deltaTime * verticalInput * verticalSpeed);
+    void FixedUpdate() {
+        PlayerMovement(movementVector);
+    }
+
+    private void PlayerMovement(Vector3 moveToVec){
+        playerRb.velocity = moveToVec * playerSpeed * Time.fixedDeltaTime;
     }
 
     private void ConstrainPlayer(){
