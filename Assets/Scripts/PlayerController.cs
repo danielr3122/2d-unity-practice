@@ -47,6 +47,11 @@ public class PlayerController : MonoBehaviour
         movementVector = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0).normalized;
         ConstrainPlayer();
         NearWater();
+        PlayerInteraction();
+    }
+
+    private void PlayerInteraction(){
+        // Shoot seed
         if(Input.GetMouseButtonDown(0)){
             Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             Debug.Log("Mouse Down");
@@ -56,6 +61,13 @@ public class PlayerController : MonoBehaviour
                 seed.GetComponent<SeedController>().targetPosition = mousePosition;
                 Debug.Log("Mouse Position: " + mousePosition);
                 seed.GetComponent<SeedController>().startMoving = true;
+                seedCount--;
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.E)){
+            if(seedCount > 0){
+                // TODO: Plant seed
                 seedCount--;
             }
         }
