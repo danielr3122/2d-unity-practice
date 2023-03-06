@@ -26,6 +26,7 @@ public class SeedController : MonoBehaviour
     void Update()
     {
         if(startMoving){
+            gameObject.tag = "Bullet Seed";
             if(!isTargetCalculated){
                 targetDirection = targetPosition - transform.position;
                 isTargetCalculated = true;

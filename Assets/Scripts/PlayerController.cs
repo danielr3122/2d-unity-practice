@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         waterLimit = 3;
         waterCollectTime = 1.5f;
         seedCount = 0;
-        playerSpeed = 200;
+        playerSpeed = 100f;
         playerRb = GetComponent<Rigidbody2D>();
         waterSource = GameObject.Find("Water Source");
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
