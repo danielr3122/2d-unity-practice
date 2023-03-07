@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Water Source
   - Seed
+  - Bullet Seed
+  - Boundary
   layers:
   - Default
   - TransparentFX
@@ -13,11 +15,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bullet Seed
+  - Seed
+  - Player
+  - Water Source
+  - Enemy
   - 
   - 
   - 
@@ -63,4 +65,7 @@ TagManager:
     locked: 0
   - name: Seed
     uniqueID: 2599479191
+    locked: 0
+  - name: Camera Barrier
+    uniqueID: 2513041877
     locked: 0

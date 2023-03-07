@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private GameObject waterSource;
     private Camera mainCamera;
     public GameObject seedPrefab;
+    public GameObject plantPrefab;
 
     private Rigidbody2D playerRb;
 
@@ -54,13 +55,12 @@ public class PlayerController : MonoBehaviour
         // Shoot seed
         if(Input.GetMouseButtonDown(0)){
             Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log("Mouse Down");
             if(seedCount > 0){
-                Debug.Log("Shooting");
+                Debug.Log(mousePosition);
                 GameObject seed = Instantiate(seedPrefab, transform.position, transform.rotation);
                 seed.GetComponent<SeedController>().targetPosition = mousePosition;
-                Debug.Log("Mouse Position: " + mousePosition);
-                seed.GetComponent<SeedController>().startMoving = true;
+                seed.gameObject.tag = "Bullet Seed";
+                seed.layer = LayerMask.NameToLayer("Bullet Seed");
                 seedCount--;
             }
         }
@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)){
             if(seedCount > 0){
                 // TODO: Plant seed
+                Instantiate(plantPrefab, transform.position, plantPrefab.transform.rotation);
                 seedCount--;
             }
         }
@@ -109,6 +110,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("Seed")){
+            Debug.Log("Player collided with seed");
             seedCount++;
             Destroy(other.gameObject);
         }
