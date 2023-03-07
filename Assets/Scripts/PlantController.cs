@@ -14,6 +14,7 @@ public class PlantController : MonoBehaviour
     public Sprite stageTwoSprite;
     public Sprite stageThreeSprite;
     private GameObject currSeed;
+    private int wateredCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -36,13 +37,13 @@ public class PlantController : MonoBehaviour
         if(time > stageTwoTime && plantStage == "Sprout"){
             currentSprite.sprite = stageThreeSprite;
             currSeed = Instantiate(seedPrefab, transform.position, seedPrefab.transform.rotation);
-            currSeed.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(3, 5), Random.Range(3, 5)), ForceMode2D.Impulse);
+            currSeed.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f)).normalized * 5, ForceMode2D.Impulse);
             plantStage = "Flower";
             time = 0;
         }
         if(time > despawnTime && plantStage == "Flower"){
             currSeed = Instantiate(seedPrefab, transform.position, seedPrefab.transform.rotation);
-            currSeed.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(3, 5), Random.Range(3, 5)), ForceMode2D.Impulse);
+            currSeed.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f)).normalized * 5, ForceMode2D.Impulse);
             Destroy(gameObject);
         }
     }

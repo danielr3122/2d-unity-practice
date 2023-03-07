@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,16 +20,30 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed;
 
     private GameObject waterSource;
-    private Camera mainCamera;
     public GameObject seedPrefab;
     public GameObject plantPrefab;
     public GameObject testReticle;
 
+    public Image waterLevelOne;
+    public Image waterLevelTwo;
+    public Image waterLevelThree;
+
+    public Sprite emptyWaterSprite;
+    public Sprite fullWaterSprite;
+
+    public SpriteRenderer reticleRenderer;
+    public Sprite defaultReticleSprite;
+    public Sprite plantingReticleSprite;
+    public Sprite wateringReticleSprite;
+
     private Rigidbody2D playerRb;
+
+    private Camera mainCamera;
 
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
         xMovementRange = 8f;
         yMovementRange = 4.25f;
         waterCount = 0;
@@ -40,6 +55,7 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
         waterSource = GameObject.Find("Water Source");
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        testReticle.transform.position += Vector3.up;
     }
 
     // Update is called once per frame
@@ -50,12 +66,35 @@ public class PlayerController : MonoBehaviour
         ConstrainPlayer();
         NearWater();
         PlayerInteraction();
-        testReticle.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
+        if(reticleRenderer.sprite == plantingReticleSprite || reticleRenderer.sprite == wateringReticleSprite){
+            testReticle.transform.position = ((Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition + transform.position)).normalized + (Vector2) transform.position;
+        } else {
+            testReticle.transform.position = ((Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
+
+        if(waterCount == 1){
+            waterLevelOne.sprite = fullWaterSprite;
+            waterLevelTwo.sprite = emptyWaterSprite;
+            waterLevelThree.sprite = emptyWaterSprite;
+        } else if(waterCount == 2){
+            waterLevelOne.sprite = fullWaterSprite;
+            waterLevelTwo.sprite = fullWaterSprite;
+            waterLevelThree.sprite = emptyWaterSprite;
+        } else if(waterCount == 3){
+            waterLevelOne.sprite = fullWaterSprite;
+            waterLevelTwo.sprite = fullWaterSprite;
+            waterLevelThree.sprite = fullWaterSprite;
+        } else {
+            waterLevelOne.sprite = emptyWaterSprite;
+            waterLevelTwo.sprite = emptyWaterSprite;
+            waterLevelThree.sprite = emptyWaterSprite;
+        }
     }
 
     private void PlayerInteraction(){
         // Shoot seed
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0) && !Input.GetButton("E")){
+            Debug.Log("Shoot");
             Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             if(seedCount > 0){
                 Debug.Log(mousePosition);
@@ -67,12 +106,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.E)){
-            if(seedCount > 0){
-                // TODO: Plant seed
-                Instantiate(plantPrefab, transform.position, plantPrefab.transform.rotation);
-                seedCount--;
+        if(Input.GetButton("E")){
+            reticleRenderer.sprite = plantingReticleSprite;
+            if(Input.GetMouseButtonDown(0)){
+                Debug.Log("Plant");
+                if(seedCount > 0){
+                    Instantiate(plantPrefab, testReticle.transform.position, plantPrefab.transform.rotation);
+                    seedCount--;
+                }
             }
+        } else {
+            reticleRenderer.sprite = defaultReticleSprite;
         }
     }
 
