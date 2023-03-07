@@ -45,6 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Camera Barrier
+    uniqueID: 2513041877
+    locked: 0
   - name: Background
     uniqueID: 283983505
     locked: 0
@@ -66,6 +69,6 @@ TagManager:
   - name: Seed
     uniqueID: 2599479191
     locked: 0
-  - name: Camera Barrier
-    uniqueID: 2513041877
+  - name: Reticle
+    uniqueID: 3447156681
     locked: 0

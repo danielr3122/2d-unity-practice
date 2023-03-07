@@ -23,7 +23,6 @@ public class SeedController : MonoBehaviour
         }
         seedSpeed = 50f;
         isTargetCalculated = false;
-        seedRb.AddForce(new Vector2(Random.Range(5, 10), Random.Range(5, 10)), ForceMode2D.Impulse);
     }
 
     // Update is called once per frame

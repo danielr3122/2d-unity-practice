@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private Camera mainCamera;
     public GameObject seedPrefab;
     public GameObject plantPrefab;
+    public GameObject testReticle;
 
     private Rigidbody2D playerRb;
 
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         ConstrainPlayer();
         NearWater();
         PlayerInteraction();
+        testReticle.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
     }
 
     private void PlayerInteraction(){
