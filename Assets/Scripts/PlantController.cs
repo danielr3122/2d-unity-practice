@@ -28,7 +28,6 @@ public class PlantController : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        // TODO: Change sprite between stages, spawn x number of seeds
         if(time > stageOneTime && plantStage == "Seedling"){
             currentSprite.sprite = stageTwoSprite;
             plantStage = "Sprout";
@@ -51,9 +50,19 @@ public class PlantController : MonoBehaviour
         currSeed.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f)).normalized * 5, ForceMode2D.Impulse);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("Reticle") && GameObject.FindGameObjectWithTag("Reticle").GetComponent<SpriteRenderer>().sprite == plantingReticleSprite){
-            Debug.Log("Shouldn't be able to plant here");
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //     if(other.gameObject.CompareTag("Plant") && GameObject.FindGameObjectWithTag("Reticle").GetComponent<SpriteRenderer>().sprite == plantingReticleSprite){
+    //         Debug.Log("Shouldn't be able to plant here");
+    //         SpawnSeed();
+    //         Destroy(gameObject);
+    //     }
+    // }
+
+    // private void OnTriggerStay2D(Collider2D other) {
+    //     if(other.gameObject.CompareTag("Plant") && GameObject.FindGameObjectWithTag("Reticle").GetComponent<SpriteRenderer>().sprite == plantingReticleSprite){
+    //         Debug.Log("Shouldn't be able to plant here");
+    //         SpawnSeed();
+    //         Destroy(gameObject);
+    //     }
+    // }
 }
