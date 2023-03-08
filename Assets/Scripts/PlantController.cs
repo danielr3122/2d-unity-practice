@@ -14,7 +14,7 @@ public class PlantController : MonoBehaviour
     public Sprite stageTwoSprite;
     public Sprite stageThreeSprite;
     private GameObject currSeed;
-    private int wateredCount = 0;
+    public Sprite plantingReticleSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -36,15 +36,24 @@ public class PlantController : MonoBehaviour
         }
         if(time > stageTwoTime && plantStage == "Sprout"){
             currentSprite.sprite = stageThreeSprite;
-            currSeed = Instantiate(seedPrefab, transform.position, seedPrefab.transform.rotation);
-            currSeed.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f)).normalized * 5, ForceMode2D.Impulse);
+            SpawnSeed();
             plantStage = "Flower";
             time = 0;
         }
         if(time > despawnTime && plantStage == "Flower"){
-            currSeed = Instantiate(seedPrefab, transform.position, seedPrefab.transform.rotation);
-            currSeed.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f)).normalized * 5, ForceMode2D.Impulse);
+            SpawnSeed();
             Destroy(gameObject);
+        }
+    }
+
+    private void SpawnSeed(){
+        currSeed = Instantiate(seedPrefab, transform.position, seedPrefab.transform.rotation);
+        currSeed.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f)).normalized * 5, ForceMode2D.Impulse);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Reticle") && GameObject.FindGameObjectWithTag("Reticle").GetComponent<SpriteRenderer>().sprite == plantingReticleSprite){
+            Debug.Log("Shouldn't be able to plant here");
         }
     }
 }

@@ -47,12 +47,19 @@ public class SeedController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    // private void OnCollisionEnter2D(Collision2D other) {
+    //     if(other.gameObject.CompareTag("Boundary") && gameObject.CompareTag("Bullet Seed")){
+    //         Debug.Log("Bullet Left Map");
+    //         Destroy(gameObject);
+    //     } else {
+    //         Debug.Log("Seed Bounced Off Wall");
+    //     }
+    // }
+
+    private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Boundary") && gameObject.CompareTag("Bullet Seed")){
             Debug.Log("Bullet Left Map");
             Destroy(gameObject);
-        } else {
-            Debug.Log("Seed Bounced Off Wall");
         }
     }
 }

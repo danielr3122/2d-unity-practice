@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 6063232358733074556}
   - component: {fileID: 8257277538120201048}
   - component: {fileID: 8380485663900350986}
-  m_Layer: 0
+  - component: {fileID: -345896067795880640}
+  - component: {fileID: 1257384679646791054}
+  m_Layer: 12
   m_Name: Plant
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -427502721
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e41a52e996d881346a2d21193290dc39, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,3 +104,51 @@ MonoBehaviour:
   currentSprite: {fileID: 8257277538120201048}
   stageTwoSprite: {fileID: 21300000, guid: edc882e0d80694d4b9c2745b17b8433c, type: 3}
   stageThreeSprite: {fileID: 21300000, guid: f4cf675b39fd3d340a30551338a77c35, type: 3}
+  plantingReticleSprite: {fileID: 21300000, guid: 3c539ed6afb93b147a38d6eedd5fbd1d, type: 3}
+--- !u!61 &-345896067795880640
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948395951761049312}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
+--- !u!50 &1257384679646791054
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948395951761049312}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

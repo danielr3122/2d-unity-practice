@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private float waterCollectTime;
     private float waterLimit;
     private bool nearWater;
+    public bool canPlantHere;
     private int seedCount;
     private Vector3 movementVector;
 
@@ -43,7 +44,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
         xMovementRange = 8f;
         yMovementRange = 4.25f;
         waterCount = 0;
@@ -66,11 +66,6 @@ public class PlayerController : MonoBehaviour
         ConstrainPlayer();
         NearWater();
         PlayerInteraction();
-        if(reticleRenderer.sprite == plantingReticleSprite || reticleRenderer.sprite == wateringReticleSprite){
-            testReticle.transform.position = ((Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition + transform.position)).normalized + (Vector2) transform.position;
-        } else {
-            testReticle.transform.position = ((Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }
 
         if(waterCount == 1){
             waterLevelOne.sprite = fullWaterSprite;
@@ -154,11 +149,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Seed")){
+            Destroy(other.gameObject);
             Debug.Log("Player collided with seed");
             seedCount++;
-            Destroy(other.gameObject);
         }
     }
 }
