@@ -52,30 +52,6 @@ TagManager:
   - name: Camera Barrier
     uniqueID: 2513041877
     locked: 0
-  - name: Background
-    uniqueID: 283983505
-    locked: 0
-  - name: Planted Plant
-    uniqueID: 3867464575
-    locked: 0
-  - name: Water
-    uniqueID: 403825223
-    locked: 0
-  - name: Player
-    uniqueID: 3269881987
-    locked: 0
-  - name: Enemy
-    uniqueID: 3666405477
-    locked: 0
-  - name: Watering Can
-    uniqueID: 1394446725
-    locked: 0
-  - name: Pot Cannon
-    uniqueID: 3813239013
-    locked: 0
-  - name: Seed
-    uniqueID: 2599479191
-    locked: 0
-  - name: Reticle
-    uniqueID: 3447156681
+  - name: UI
+    uniqueID: 651677745
     locked: 0

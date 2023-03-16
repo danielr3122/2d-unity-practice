@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private float xMovementRange;
     private float yMovementRange;
-    private float waterCount;
+    public float waterCount;
     private float waterTime;
     private float waterCollectTime;
     private float waterLimit;
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerInteraction(){
         // Shoot seed
-        if(Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.E)){
+        if(Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.E) && !Input.GetKey(KeyCode.Q)){
             Debug.Log("Shoot");
             Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             if(seedCount > 0){
@@ -112,7 +112,13 @@ public class PlayerController : MonoBehaviour
                     seedCount--;
                 }
             }
-        } else {
+        }
+
+        if(Input.GetKey(KeyCode.Q)){
+            reticleRenderer.sprite = wateringReticleSprite;
+        }
+
+        if(!Input.GetKey(KeyCode.E) && !Input.GetKey(KeyCode.Q)){
             reticleRenderer.sprite = defaultReticleSprite;
         }
     }
