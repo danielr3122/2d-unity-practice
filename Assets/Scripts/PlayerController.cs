@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     private Camera mainCamera;
 
+    public GameManagerController gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -154,6 +156,12 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             Debug.Log("Player collided with seed");
             seedCount++;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.CompareTag("Enemy")){
+            gameManager.GameOver();
         }
     }
 }

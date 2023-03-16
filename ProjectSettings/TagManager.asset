@@ -11,6 +11,7 @@ TagManager:
   - Plant
   - Reticle
   - Grass
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -62,6 +63,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3269881987
+    locked: 0
+  - name: Enemy
+    uniqueID: 3666405477
     locked: 0
   - name: Watering Can
     uniqueID: 1394446725
