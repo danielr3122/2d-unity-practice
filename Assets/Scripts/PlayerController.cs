@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void NearWater(){
-        if((Mathf.Abs(waterSource.transform.position.x - transform.position.x) < 4) &&
+        if((Mathf.Abs(waterSource.transform.position.x - transform.position.x) < 3) &&
         (Mathf.Abs(waterSource.transform.position.y - transform.position.y) < 2)){
             if(waterTime > waterCollectTime && waterCount < waterLimit){
                 waterCount++;
