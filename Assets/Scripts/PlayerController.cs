@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerInteraction(){
         // Shoot seed
-        if(Input.GetMouseButtonDown(0) && !Input.GetButton("E")){
+        if(Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.E)){
             Debug.Log("Shoot");
             Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             if(seedCount > 0){
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetButton("E")){
+        if(Input.GetKey(KeyCode.E)){
             reticleRenderer.sprite = plantingReticleSprite;
             if(Input.GetMouseButtonDown(0)){
                 Debug.Log("Plant");
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void NearWater(){
-        if((Mathf.Abs(waterSource.transform.position.x - transform.position.x) < 4) &&
+        if((Mathf.Abs(waterSource.transform.position.x - transform.position.x) < 3) &&
         (Mathf.Abs(waterSource.transform.position.y - transform.position.y) < 2)){
             if(waterTime > waterCollectTime && waterCount < waterLimit){
                 waterCount++;
