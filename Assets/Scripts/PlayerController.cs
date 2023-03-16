@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
     public Sprite defaultReticleSprite;
     public Sprite plantingReticleSprite;
     public Sprite wateringReticleSprite;
+    public SpriteRenderer seedCannonRenderer;
+    public Sprite unloadedSeedCannonSprite;
+    public Sprite loadedSeedCannonSprite;
 
     private Rigidbody2D playerRb;
 
@@ -68,7 +71,19 @@ public class PlayerController : MonoBehaviour
         ConstrainPlayer();
         NearWater();
         PlayerInteraction();
+        UpdateWaterStorage();
+        UpdateSeedCannon();
+    }
 
+    private void UpdateSeedCannon(){
+        if(seedCount > 0){
+            seedCannonRenderer.sprite = loadedSeedCannonSprite;
+        } else {
+            seedCannonRenderer.sprite = unloadedSeedCannonSprite;
+        }
+    }
+
+    private void UpdateWaterStorage(){
         if(waterCount == 1){
             waterLevelOne.sprite = fullWaterSprite;
             waterLevelTwo.sprite = emptyWaterSprite;
@@ -116,6 +131,9 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Q)){
             reticleRenderer.sprite = wateringReticleSprite;
+            if(Input.GetMouseButtonDown(0)){
+                waterCount--;
+            }
         }
 
         if(!Input.GetKey(KeyCode.E) && !Input.GetKey(KeyCode.Q)){

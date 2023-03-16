@@ -79,7 +79,6 @@ public class PlantController : MonoBehaviour
                 Debug.Log("Plant watered");
                 receivedFirstWater = true;
                 isWatered = true;
-                player.GetComponent<PlayerController>().waterCount--;
             }
         }
     }

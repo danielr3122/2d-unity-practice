@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        chaseSpeed = .1f;
+        chaseSpeed = .5f;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
