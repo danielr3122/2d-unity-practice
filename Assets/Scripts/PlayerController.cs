@@ -132,7 +132,9 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.Q)){
             reticleRenderer.sprite = wateringReticleSprite;
             if(Input.GetMouseButtonDown(0)){
-                waterCount--;
+                if(waterCount > 0){
+                    waterCount--;
+                }
             }
         }
 
