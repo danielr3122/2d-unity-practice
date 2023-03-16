@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManagerController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class GameManagerController : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject pauseScreen;
     public GameObject inGameScreen;
+
+    public TextMeshProUGUI waveCountText;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +81,7 @@ public class GameManagerController : MonoBehaviour
             if(numOfEnemiesAlive <= 0){
                 Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
                 ++waveNumber;
+                waveCountText.text = "Wave: " + waveNumber;
                 Debug.Log("Wave: " + waveNumber);
             } else {
                 if(time > spawnTime && numOfEnemiesAlive < waveNumber){
