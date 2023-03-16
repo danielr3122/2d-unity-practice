@@ -10,6 +10,8 @@ public class PlantController : MonoBehaviour
     private GameObject reticle;
 
     private float time;
+    private float decayTime;
+    private float timeToDecay = 15f;
     private float stageOneTime = 5f;
     private float stageTwoTime = 5f;
     private float despawnTime = 5f;
@@ -45,6 +47,12 @@ public class PlantController : MonoBehaviour
             } else {
                 time += Time.deltaTime;
             }
+        } else {
+            decayTime += Time.deltaTime;
+        }
+
+        if(decayTime > timeToDecay){
+            Destroy(gameObject);
         }
 
         if(time > stageOneTime && plantStage == "Seedling"){
