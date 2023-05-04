@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public GameObject plantPrefab;
     public GameObject testReticle;
 
+    private Animator animator;
+
     public Image waterLevelOne;
     public Image waterLevelTwo;
     public Image waterLevelThree;
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         xMovementRange = 8f;
         yMovementRange = 4.25f;
         waterCount = 0;
@@ -132,7 +135,9 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.Q)){
             reticleRenderer.sprite = wateringReticleSprite;
             if(Input.GetMouseButtonDown(0)){
-                waterCount--;
+                if(waterCount > 0){
+                    waterCount--;
+                }
             }
         }
 
@@ -146,6 +151,12 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PlayerMovement(Vector3 moveToVec){
+        if(moveToVec != Vector3.zero){
+            animator.SetBool("isRunning", true);
+        } else {
+            animator.SetBool("isRunning", false);
+        }
+
         playerRb.velocity = moveToVec * playerSpeed * Time.fixedDeltaTime;
     }
 
