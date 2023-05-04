@@ -11,7 +11,7 @@ public class GameManagerController : MonoBehaviour
 
     private float spawnTime;
     private float time;
-    private float waveNumber;
+    private int waveNumber;
     private int numOfEnemiesAlive;
     private float spawnBoundaryX = 9.39f;
     private float spawnBoundaryY = 5.5f;
@@ -24,6 +24,9 @@ public class GameManagerController : MonoBehaviour
     public GameObject inGameScreen;
 
     public TextMeshProUGUI waveCountText;
+    public TextMeshProUGUI highestWaveText;
+
+    public TestScriptableObject savedStats;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +38,7 @@ public class GameManagerController : MonoBehaviour
         isGameStarted = false;
         Time.timeScale = 0;
         startGameScreen.SetActive(true);
+        highestWaveText.text = "Highest Wave: " + savedStats.highWave;
         gameOverScreen.SetActive(false);
     }
 
@@ -47,6 +51,9 @@ public class GameManagerController : MonoBehaviour
     }
 
     public void GameOver(){
+        if(waveNumber > savedStats.highWave){
+            savedStats.highWave = waveNumber;
+        }
         gameOverScreen.SetActive(true);
         Cursor.visible = true;
         isGameStarted = false;
@@ -80,7 +87,7 @@ public class GameManagerController : MonoBehaviour
 
             if(numOfEnemiesAlive <= 0){
                 Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
-                ++waveNumber;
+                waveNumber++;
                 waveCountText.text = "Wave: " + waveNumber;
                 Debug.Log("Wave: " + waveNumber);
             } else {
