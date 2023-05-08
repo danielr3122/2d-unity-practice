@@ -2141,25 +2141,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde771618960b7d40ab14859332c1159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeed: 15
-  verticalSpeed: 10
-  playerSpeed: 0
   seedPrefab: {fileID: 6160317552632116672, guid: 32adbe3adb5c1204f9e3fd0beffcbd54, type: 3}
   plantPrefab: {fileID: 948395951761049312, guid: 4325fce878d65ec47871bf1719ca0b4b, type: 3}
-  testReticle: {fileID: 2121093993}
+  reticle: {fileID: 2121093993}
+  waterSource: {fileID: 628329310}
   canPlantHere: 0
   waterCount: 0
   waterLevelOne: {fileID: 1842077136}
   waterLevelTwo: {fileID: 108872864}
   waterLevelThree: {fileID: 1776461633}
+  reticleRenderer: {fileID: 2121093994}
+  seedCannonRenderer: {fileID: 273293542}
   emptyWaterSprite: {fileID: 21300000, guid: 85b55075d4b3b9d429488b9d598b8fd5, type: 3}
   fullWaterSprite: {fileID: 21300000, guid: 786608bbf9475f14cb3e059fa3f668a2, type: 3}
-  reticleRenderer: {fileID: 2121093994}
-  defaultReticleSprite: {fileID: 21300000, guid: afb4647fd3e17274db49a0d8f3524b0f, type: 3}
-  plantingReticleSprite: {fileID: 21300000, guid: 3c539ed6afb93b147a38d6eedd5fbd1d, type: 3}
-  wateringReticleSprite: {fileID: 21300000, guid: def5685cb091dd5428eb62415215fc9b, type: 3}
-  seedCannonRenderer: {fileID: 273293542}
-  unloadedSeedCannonSprite: {fileID: 21300000, guid: a9ba6d462e3be1647a9262e8b39ffb44, type: 3}
+  defaultReticle: {fileID: 21300000, guid: afb4647fd3e17274db49a0d8f3524b0f, type: 3}
+  plantingReticle: {fileID: 21300000, guid: 3c539ed6afb93b147a38d6eedd5fbd1d, type: 3}
+  plantingBlockedReticle: {fileID: 21300000, guid: 3631d9b59144a1f46a60ae7008a6c77e, type: 3}
+  wateringReticle: {fileID: 21300000, guid: def5685cb091dd5428eb62415215fc9b, type: 3}
+  wateringBlockedReticle: {fileID: 21300000, guid: 0f4a7854c39de7e4d90ff46385539a85, type: 3}
+  unloadedSeedCannon: {fileID: 21300000, guid: a9ba6d462e3be1647a9262e8b39ffb44, type: 3}
   loadedSeedCannonSprite: {fileID: 21300000, guid: 14247415b9930ae4d9569e5306b86125, type: 3}
   gameManager: {fileID: 598675334}
 --- !u!4 &1243327149
@@ -3793,3 +3793,4 @@ MonoBehaviour:
   plantingBlockedReticle: {fileID: 21300000, guid: 3631d9b59144a1f46a60ae7008a6c77e, type: 3}
   wateringReticle: {fileID: 21300000, guid: def5685cb091dd5428eb62415215fc9b, type: 3}
   wateringBlockedReticle: {fileID: 21300000, guid: 0f4a7854c39de7e4d90ff46385539a85, type: 3}
+  isInRange: 0

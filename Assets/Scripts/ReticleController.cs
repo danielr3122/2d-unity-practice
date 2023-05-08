@@ -11,6 +11,8 @@ public class ReticleController : MonoBehaviour
     public Sprite wateringReticle;
     public Sprite wateringBlockedReticle;
 
+    public bool isInRange;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,15 +26,19 @@ public class ReticleController : MonoBehaviour
         if(reticleRenderer.sprite == plantingReticle || reticleRenderer.sprite == wateringReticle){
             if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x - player.transform.position.x < 1
             && Camera.main.ScreenToWorldPoint(Input.mousePosition).y - player.transform.position.y < 1){
-                Debug.Log("Inside range");
+                isInRange = true;
             } else {
                 if(reticleRenderer.sprite == plantingReticle){
                     reticleRenderer.sprite = plantingBlockedReticle;
-                } else if(reticleRenderer.sprite == wateringBlockedReticle){
-                    reticleRenderer.sprite = wateringReticle;
+                } else if(reticleRenderer.sprite == wateringReticle){
+                    reticleRenderer.sprite = wateringBlockedReticle;
                 }
-                Debug.Log("Outside rnage");
+                isInRange = false;
             }
         }
+    }
+
+    public void ChangeReticle(Sprite newReticle) {
+        reticleRenderer.sprite = newReticle;
     }
 }
