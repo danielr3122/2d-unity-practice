@@ -3789,5 +3789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1243327146}
   reticleRenderer: {fileID: 2121093994}
-  plantingReticleSprite: {fileID: 21300000, guid: 3c539ed6afb93b147a38d6eedd5fbd1d, type: 3}
-  wateringReticleSprite: {fileID: 21300000, guid: def5685cb091dd5428eb62415215fc9b, type: 3}
+  plantingReticle: {fileID: 21300000, guid: 3c539ed6afb93b147a38d6eedd5fbd1d, type: 3}
+  plantingBlockedReticle: {fileID: 21300000, guid: 3631d9b59144a1f46a60ae7008a6c77e, type: 3}
+  wateringReticle: {fileID: 21300000, guid: def5685cb091dd5428eb62415215fc9b, type: 3}
+  wateringBlockedReticle: {fileID: 21300000, guid: 0f4a7854c39de7e4d90ff46385539a85, type: 3}

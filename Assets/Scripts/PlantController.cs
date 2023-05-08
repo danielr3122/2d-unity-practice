@@ -90,4 +90,10 @@ public class PlantController : MonoBehaviour
         currSeed = Instantiate(seedPrefab, transform.position, seedPrefab.transform.rotation);
         currSeed.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f)).normalized * 5, ForceMode2D.Impulse);
     }
+
+    void OnCollisionStay2D(Collision2D other) {
+        if(other.gameObject.CompareTag("Reticle") && Input.GetMouseButtonDown(0)){
+            Debug.Log("you fucking did it");
+        } 
+    }
 }
