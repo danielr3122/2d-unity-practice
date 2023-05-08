@@ -151,12 +151,6 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PlayerMovement(Vector3 moveToVec){
-        if(moveToVec != Vector3.zero){
-            animator.SetBool("isRunning", true);
-        } else {
-            animator.SetBool("isRunning", false);
-        }
-
         playerRb.velocity = moveToVec * playerSpeed * Time.fixedDeltaTime;
     }
 

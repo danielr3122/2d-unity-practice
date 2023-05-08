@@ -13,8 +13,8 @@ public class GameManagerController : MonoBehaviour
     private float time;
     private int waveNumber;
     private int numOfEnemiesAlive;
-    private float spawnBoundaryX = 9.39f;
-    private float spawnBoundaryY = 5.5f;
+    private float spawnBoundaryX = 9f;
+    private float spawnBoundaryY = 5f;
 
     public GameObject enemyPrefab;
 
@@ -86,13 +86,10 @@ public class GameManagerController : MonoBehaviour
             }
 
             if(numOfEnemiesAlive <= 0){
-                Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
-                waveNumber++;
+                ++waveNumber;
                 waveCountText.text = "Wave: " + waveNumber;
-                Debug.Log("Wave: " + waveNumber);
-            } else {
-                if(time > spawnTime && numOfEnemiesAlive < waveNumber){
-                    time = 0;
+
+                for(int i = 0; i < waveNumber; i++){
                     Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
                 }
             }
