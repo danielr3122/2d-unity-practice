@@ -18,7 +18,9 @@ public class PlantController : MonoBehaviour
 
     public string plantStage;
 
-    public SpriteRenderer currentSprite;
+    public SpriteRenderer spriteRenderer;
+    public Sprite stageZeroSprite;
+    public Sprite stageOneSprite;
     public Sprite stageTwoSprite;
     public Sprite stageThreeSprite;
     public Sprite plantingReticleSprite;
@@ -56,13 +58,13 @@ public class PlantController : MonoBehaviour
         }
 
         if(time > stageOneTime && plantStage == "Seedling"){
-            currentSprite.sprite = stageTwoSprite;
+            spriteRenderer.sprite = stageTwoSprite;
             plantStage = "Sprout";
             isWatered = false;
             time = 0;
         }
         if(time > stageTwoTime && plantStage == "Sprout"){
-            currentSprite.sprite = stageThreeSprite;
+            spriteRenderer.sprite = stageThreeSprite;
             SpawnSeed();
             plantStage = "Flower";
             isWatered = false;
@@ -79,6 +81,7 @@ public class PlantController : MonoBehaviour
                 Debug.Log("Plant watered");
                 receivedFirstWater = true;
                 isWatered = true;
+                spriteRenderer.sprite = stageOneSprite;
             }
         }
     }

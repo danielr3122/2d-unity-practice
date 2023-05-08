@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c5200cdf2e11cd449b64086c4f70756d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 945e91c14e6b77a44a28c8dd5a567f53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,6 +101,8 @@ MonoBehaviour:
   seedPrefab: {fileID: 6160317552632116672, guid: 32adbe3adb5c1204f9e3fd0beffcbd54, type: 3}
   plantStage: 
   currentSprite: {fileID: 8257277538120201048}
+  stageZeroSprite: {fileID: 21300000, guid: 945e91c14e6b77a44a28c8dd5a567f53, type: 3}
+  stageOneSprite: {fileID: 21300000, guid: c5200cdf2e11cd449b64086c4f70756d, type: 3}
   stageTwoSprite: {fileID: 21300000, guid: a260aaf28ced4394daaa02d644330067, type: 3}
   stageThreeSprite: {fileID: 21300000, guid: 640dd49e089c42a48a8199daa2985f96, type: 3}
   plantingReticleSprite: {fileID: 21300000, guid: 3c539ed6afb93b147a38d6eedd5fbd1d, type: 3}
@@ -122,7 +124,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.22498962}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.62, y: 0.59}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
