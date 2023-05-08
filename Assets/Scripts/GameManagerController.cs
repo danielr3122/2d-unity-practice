@@ -9,7 +9,6 @@ public class GameManagerController : MonoBehaviour
 {
     private bool isGameStarted;
 
-    private float spawnTime;
     private float time;
     private int waveNumber;
     private int numOfEnemiesAlive;
@@ -31,7 +30,6 @@ public class GameManagerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnTime = 2;
         time = 0;
         waveNumber = 1;
         numOfEnemiesAlive = 0;

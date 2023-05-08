@@ -7,23 +7,23 @@ public class PlayerController : MonoBehaviour
 {
     private float xMovementRange;
     private float yMovementRange;
-    public float waterCount;
     private float waterTime;
     private float waterCollectTime;
     private float waterLimit;
     private bool nearWater;
-    public bool canPlantHere;
     private int seedCount;
+    private GameObject waterSource;
     private Vector3 movementVector;
 
     [SerializeField] private float horizontalSpeed;
     [SerializeField] private float verticalSpeed;
     [SerializeField] private float playerSpeed;
 
-    private GameObject waterSource;
     public GameObject seedPrefab;
     public GameObject plantPrefab;
     public GameObject testReticle;
+    public bool canPlantHere;
+    public float waterCount;
 
     private Animator animator;
 
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         waterTime += Time.deltaTime;
         movementVector = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0).normalized;
         ConstrainPlayer();
-        NearWater();
+        // NearWater();
         PlayerInteraction();
         UpdateWaterStorage();
         UpdateSeedCannon();
@@ -169,17 +169,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void NearWater(){
-        if((Mathf.Abs(waterSource.transform.position.x - transform.position.x) < 3) &&
-        (Mathf.Abs(waterSource.transform.position.y - transform.position.y) < 2)){
-            if(waterTime > waterCollectTime && waterCount < waterLimit){
-                waterCount++;
-                waterTime = 0;
-                Debug.Log("Water Count: " + waterCount);
-            }
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Seed")){
             Destroy(other.gameObject);
@@ -191,6 +180,15 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("Enemy")){
             gameManager.GameOver();
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D other) {
+        if(other.gameObject.CompareTag("Water Source")){
+            if(waterTime > waterCollectTime && waterCount < waterLimit){
+                waterCount++;
+                waterTime = 0;
+            }
         }
     }
 }
