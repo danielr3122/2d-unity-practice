@@ -108,7 +108,6 @@ public class PlayerController : MonoBehaviour
     private void PlayerInteraction(){
         // Shoot seed
         if(Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.E) && !Input.GetKey(KeyCode.Q)){
-            Debug.Log("Shoot");
             Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             if(seedCount > 0){
                 Debug.Log(mousePosition);
@@ -123,7 +122,6 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.E)){
             if(reticleController.isInRange){
                 if(Input.GetMouseButtonDown(0)){
-                    Debug.Log("Plant");
                     if(seedCount > 0){
                         Instantiate(plantPrefab, reticle.transform.position, plantPrefab.transform.rotation);
                         seedCount--;
@@ -169,7 +167,6 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Seed")){
             Destroy(other.gameObject);
-            Debug.Log("Player collided with seed");
             seedCount++;
         }
     }

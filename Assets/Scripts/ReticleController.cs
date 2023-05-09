@@ -47,9 +47,6 @@ public class ReticleController : MonoBehaviour
     }
 
     bool InRange() {
-        Debug.Log("Transform Position: " + transform.position + "\n" +
-                  "Player Position: " + player.transform.position + "\n" +
-                  "Other Position: " + Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if(Mathf.Abs(Camera.main.ScreenToWorldPoint(Input.mousePosition).x - player.transform.position.x) < 1
         && Mathf.Abs(Camera.main.ScreenToWorldPoint(Input.mousePosition).y - player.transform.position.y) < 1){
             isInRange = true;

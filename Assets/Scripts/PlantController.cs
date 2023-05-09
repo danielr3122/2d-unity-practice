@@ -80,7 +80,6 @@ public class PlantController : MonoBehaviour
             if(player.GetComponent<PlayerController>().waterCount > 0
             && (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x < 1)
             && (Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y < 1)) {
-                Debug.Log("PLANT WATERED");
                 receivedFirstWater = true;
                 isWatered = true;
                 spriteRenderer.sprite = stageOneSprite;

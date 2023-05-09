@@ -680,13 +680,14 @@ GameObject:
   m_Component:
   - component: {fileID: 503287035}
   - component: {fileID: 503287034}
+  - component: {fileID: 503287036}
   m_Layer: 15
   m_Name: PlantingZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!60 &503287034
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -801,6 +802,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503287036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503287033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57c17cf4306e294c97eb3ccb9bb1847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1243327146}
 --- !u!1 &553168685
 GameObject:
   m_ObjectHideFlags: 0

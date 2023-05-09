@@ -17,4 +17,8 @@ public class PlantingZoneController : MonoBehaviour
     {
         transform.position = player.transform.position + new Vector3(0, .2f, 0);
     }
+
+    void OnMouseDown() {
+        Debug.Log("IN THE PLANTING ZONE DUMMY");
+    }
 }
