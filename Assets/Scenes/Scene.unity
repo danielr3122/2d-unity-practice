@@ -2119,9 +2119,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1243327149}
   - component: {fileID: 1243327147}
-  - component: {fileID: 1243327151}
   - component: {fileID: 1243327150}
   - component: {fileID: 1243327152}
+  - component: {fileID: 1243327153}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2141,25 +2141,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde771618960b7d40ab14859332c1159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterCount: 0
-  canPlantHere: 0
-  horizontalSpeed: 15
-  verticalSpeed: 10
-  playerSpeed: 0
   seedPrefab: {fileID: 6160317552632116672, guid: 32adbe3adb5c1204f9e3fd0beffcbd54, type: 3}
   plantPrefab: {fileID: 948395951761049312, guid: 4325fce878d65ec47871bf1719ca0b4b, type: 3}
-  testReticle: {fileID: 2121093993}
+  reticle: {fileID: 2121093993}
+  waterSource: {fileID: 628329310}
+  canPlantHere: 0
+  waterCount: 0
   waterLevelOne: {fileID: 1842077136}
   waterLevelTwo: {fileID: 108872864}
   waterLevelThree: {fileID: 1776461633}
+  seedCannonRenderer: {fileID: 273293542}
   emptyWaterSprite: {fileID: 21300000, guid: 85b55075d4b3b9d429488b9d598b8fd5, type: 3}
   fullWaterSprite: {fileID: 21300000, guid: 786608bbf9475f14cb3e059fa3f668a2, type: 3}
-  reticleRenderer: {fileID: 2121093994}
-  defaultReticleSprite: {fileID: 21300000, guid: afb4647fd3e17274db49a0d8f3524b0f, type: 3}
-  plantingReticleSprite: {fileID: 21300000, guid: 3c539ed6afb93b147a38d6eedd5fbd1d, type: 3}
-  wateringReticleSprite: {fileID: 21300000, guid: def5685cb091dd5428eb62415215fc9b, type: 3}
-  seedCannonRenderer: {fileID: 273293542}
-  unloadedSeedCannonSprite: {fileID: 21300000, guid: a9ba6d462e3be1647a9262e8b39ffb44, type: 3}
+  unloadedSeedCannon: {fileID: 21300000, guid: a9ba6d462e3be1647a9262e8b39ffb44, type: 3}
   loadedSeedCannonSprite: {fileID: 21300000, guid: 14247415b9930ae4d9569e5306b86125, type: 3}
   gameManager: {fileID: 598675334}
 --- !u!4 &1243327149
@@ -2202,32 +2196,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1243327151
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1243327146}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1169632}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5091441, y: 0.1789474}
-    oldSize: {x: 0.66, y: 1.29}
-    newSize: {x: 0.66, y: 1.29}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.66, y: 0.61602426}
-  m_EdgeRadius: 0
 --- !u!95 &1243327152
 Animator:
   serializedVersion: 5
@@ -2248,6 +2216,50 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!60 &1243327153
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243327146}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.3092811, y: -0.28628686}
+      - {x: 0.32314712, y: -0.24955755}
+      - {x: 0.32473594, y: -0.15222153}
+      - {x: 0.2767142, y: -0.016094714}
+      - {x: 0.19797459, y: 0.13426107}
+      - {x: 0.134514, y: 0.18499246}
+      - {x: -0.13412061, y: 0.19311655}
+      - {x: -0.17116435, y: 0.17667319}
+      - {x: -0.2513777, y: 0.06316835}
+      - {x: -0.30983487, y: -0.07201445}
+      - {x: -0.33953387, y: -0.20409971}
+      - {x: -0.3246261, y: -0.27284235}
+      - {x: -0.30205232, y: -0.32022807}
+      - {x: -0.24434009, y: -0.3868658}
+      - {x: -0.1287684, y: -0.42833018}
+      - {x: 0.0055109113, y: -0.43438017}
+      - {x: 0.094269395, y: -0.43151307}
+      - {x: 0.14155686, y: -0.41740966}
+      - {x: 0.2285167, y: -0.3852805}
 --- !u!1001 &1312068676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3730,7 +3742,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 651677745
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: afb4647fd3e17274db49a0d8f3524b0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3771,5 +3783,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1243327146}
   reticleRenderer: {fileID: 2121093994}
-  plantingReticleSprite: {fileID: 21300000, guid: 3c539ed6afb93b147a38d6eedd5fbd1d, type: 3}
-  wateringReticleSprite: {fileID: 21300000, guid: def5685cb091dd5428eb62415215fc9b, type: 3}
+  defaultReticle: {fileID: 21300000, guid: afb4647fd3e17274db49a0d8f3524b0f, type: 3}
+  plantingReticle: {fileID: 21300000, guid: 3c539ed6afb93b147a38d6eedd5fbd1d, type: 3}
+  plantingBlockedReticle: {fileID: 21300000, guid: 3631d9b59144a1f46a60ae7008a6c77e, type: 3}
+  wateringReticle: {fileID: 21300000, guid: def5685cb091dd5428eb62415215fc9b, type: 3}
+  wateringBlockedReticle: {fileID: 21300000, guid: 0f4a7854c39de7e4d90ff46385539a85, type: 3}
+  isInRange: 0

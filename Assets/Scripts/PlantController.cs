@@ -75,10 +75,12 @@ public class PlantController : MonoBehaviour
             SpawnSeed();
             Destroy(gameObject);
         }
-    
-        if(Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.Q)){
-            if(player.GetComponent<PlayerController>().waterCount > 0 && (Mathf.Abs(reticle.transform.position.x - transform.position.x) < .75 && Mathf.Abs(reticle.transform.position.y - transform.position.y) < .75)){
-                Debug.Log("Plant watered");
+
+        if(Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.Q)) {
+            if(player.GetComponent<PlayerController>().waterCount > 0
+            && (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x < 1)
+            && (Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y < 1)) {
+                Debug.Log("PLANT WATERED");
                 receivedFirstWater = true;
                 isWatered = true;
                 spriteRenderer.sprite = stageOneSprite;
