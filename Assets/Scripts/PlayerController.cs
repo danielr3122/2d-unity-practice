@@ -38,16 +38,10 @@ public class PlayerController : MonoBehaviour
     public Image waterLevelTwo;
     public Image waterLevelThree;
 
-    public SpriteRenderer reticleRenderer;
     public SpriteRenderer seedCannonRenderer;
 
     public Sprite emptyWaterSprite;
     public Sprite fullWaterSprite;
-    public Sprite defaultReticle;
-    public Sprite plantingReticle;
-    public Sprite plantingBlockedReticle;
-    public Sprite wateringReticle;
-    public Sprite wateringBlockedReticle;
     public Sprite unloadedSeedCannon;
     public Sprite loadedSeedCannonSprite;
 
@@ -128,7 +122,6 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKey(KeyCode.E)){
             if(reticleController.isInRange){
-                reticleRenderer.sprite = plantingReticle;
                 if(Input.GetMouseButtonDown(0)){
                     Debug.Log("Plant");
                     if(seedCount > 0){
@@ -141,17 +134,12 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Q)){
             if(reticleController.isInRange){
-                reticleRenderer.sprite = wateringReticle;
                 if(Input.GetMouseButtonDown(0)){
                     if(waterCount > 0){
                         waterCount--;
                     }
                 }
             }
-        }
-
-        if(!Input.GetKey(KeyCode.E) && !Input.GetKey(KeyCode.Q)){
-            reticleRenderer.sprite = defaultReticle;
         }
     }
 

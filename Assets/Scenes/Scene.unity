@@ -2150,15 +2150,9 @@ MonoBehaviour:
   waterLevelOne: {fileID: 1842077136}
   waterLevelTwo: {fileID: 108872864}
   waterLevelThree: {fileID: 1776461633}
-  reticleRenderer: {fileID: 2121093994}
   seedCannonRenderer: {fileID: 273293542}
   emptyWaterSprite: {fileID: 21300000, guid: 85b55075d4b3b9d429488b9d598b8fd5, type: 3}
   fullWaterSprite: {fileID: 21300000, guid: 786608bbf9475f14cb3e059fa3f668a2, type: 3}
-  defaultReticle: {fileID: 21300000, guid: afb4647fd3e17274db49a0d8f3524b0f, type: 3}
-  plantingReticle: {fileID: 21300000, guid: 3c539ed6afb93b147a38d6eedd5fbd1d, type: 3}
-  plantingBlockedReticle: {fileID: 21300000, guid: 3631d9b59144a1f46a60ae7008a6c77e, type: 3}
-  wateringReticle: {fileID: 21300000, guid: def5685cb091dd5428eb62415215fc9b, type: 3}
-  wateringBlockedReticle: {fileID: 21300000, guid: 0f4a7854c39de7e4d90ff46385539a85, type: 3}
   unloadedSeedCannon: {fileID: 21300000, guid: a9ba6d462e3be1647a9262e8b39ffb44, type: 3}
   loadedSeedCannonSprite: {fileID: 21300000, guid: 14247415b9930ae4d9569e5306b86125, type: 3}
   gameManager: {fileID: 598675334}
@@ -3748,7 +3742,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 651677745
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: afb4647fd3e17274db49a0d8f3524b0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3789,6 +3783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1243327146}
   reticleRenderer: {fileID: 2121093994}
+  defaultReticle: {fileID: 21300000, guid: afb4647fd3e17274db49a0d8f3524b0f, type: 3}
   plantingReticle: {fileID: 21300000, guid: 3c539ed6afb93b147a38d6eedd5fbd1d, type: 3}
   plantingBlockedReticle: {fileID: 21300000, guid: 3631d9b59144a1f46a60ae7008a6c77e, type: 3}
   wateringReticle: {fileID: 21300000, guid: def5685cb091dd5428eb62415215fc9b, type: 3}

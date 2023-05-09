@@ -6,6 +6,7 @@ public class ReticleController : MonoBehaviour
 {
     public GameObject player;
     public SpriteRenderer reticleRenderer;
+    public Sprite defaultReticle;
     public Sprite plantingReticle;
     public Sprite plantingBlockedReticle;
     public Sprite wateringReticle;
@@ -23,22 +24,43 @@ public class ReticleController : MonoBehaviour
     void Update()
     {
         transform.position = ((Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        if(reticleRenderer.sprite == plantingReticle || reticleRenderer.sprite == wateringReticle){
-            if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x - player.transform.position.x < 1
-            && Camera.main.ScreenToWorldPoint(Input.mousePosition).y - player.transform.position.y < 1){
-                isInRange = true;
+
+        if(Input.GetKey(KeyCode.E)) {
+            if(InRange()) {
+                SetReticle(plantingReticle);
             } else {
-                if(reticleRenderer.sprite == plantingReticle){
-                    reticleRenderer.sprite = plantingBlockedReticle;
-                } else if(reticleRenderer.sprite == wateringReticle){
-                    reticleRenderer.sprite = wateringBlockedReticle;
-                }
-                isInRange = false;
+                SetReticle(plantingBlockedReticle);
             }
+        }
+
+        if(Input.GetKey(KeyCode.Q)) {
+            if(InRange()) {
+                SetReticle(wateringReticle);
+            } else {
+                SetReticle(wateringBlockedReticle);
+            }
+        }
+
+        if(!Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.E)) {
+            SetReticle(defaultReticle);
         }
     }
 
-    public void ChangeReticle(Sprite newReticle) {
+    bool InRange() {
+        Debug.Log("Transform Position: " + transform.position + "\n" +
+                  "Player Position: " + player.transform.position + "\n" +
+                  "Other Position: " + Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        if(Mathf.Abs(Camera.main.ScreenToWorldPoint(Input.mousePosition).x - player.transform.position.x) < 1
+        && Mathf.Abs(Camera.main.ScreenToWorldPoint(Input.mousePosition).y - player.transform.position.y) < 1){
+            isInRange = true;
+            return true;
+        } else {
+            isInRange = false;
+            return false;
+        }
+    }
+
+    void SetReticle(Sprite newReticle) {
         reticleRenderer.sprite = newReticle;
     }
 }

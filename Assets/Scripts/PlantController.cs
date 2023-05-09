@@ -75,15 +75,6 @@ public class PlantController : MonoBehaviour
             SpawnSeed();
             Destroy(gameObject);
         }
-    
-        // if(Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.Q)){
-        //     if(player.GetComponent<PlayerController>().waterCount > 0 && (Mathf.Abs(reticle.transform.position.x - transform.position.x) < 1 && Mathf.Abs(reticle.transform.position.y - transform.position.y) < 1)){
-        //         Debug.Log("Plant watered");
-        //         receivedFirstWater = true;
-        //         isWatered = true;
-        //         spriteRenderer.sprite = stageOneSprite;
-        //     }
-        // }
 
         if(Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.Q)) {
             if(player.GetComponent<PlayerController>().waterCount > 0
@@ -100,11 +91,5 @@ public class PlantController : MonoBehaviour
     private void SpawnSeed(){
         currSeed = Instantiate(seedPrefab, transform.position, seedPrefab.transform.rotation);
         currSeed.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f)).normalized * 5, ForceMode2D.Impulse);
-    }
-
-    void OnCollisionStay2D(Collision2D other) {
-        if(other.gameObject.CompareTag("Reticle") && Input.GetMouseButtonDown(0)){
-            Debug.Log("you fucking did it");
-        } 
     }
 }
