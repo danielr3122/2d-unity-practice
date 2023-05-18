@@ -27,22 +27,22 @@ public class ReticleController : MonoBehaviour
 
         if(Input.GetKey(KeyCode.E)) {
             if(InRange()) {
-                SetReticle(plantingReticle);
+                SetReticle("PlantingReticle");
             } else {
-                SetReticle(plantingBlockedReticle);
+                SetReticle("NoPlantingReticle");
             }
         }
 
         if(Input.GetKey(KeyCode.Q)) {
             if(InRange()) {
-                SetReticle(wateringReticle);
+                SetReticle("WateringReticle");
             } else {
-                SetReticle(wateringBlockedReticle);
+                SetReticle("NoWateringReticle");
             }
         }
 
         if(!Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.E)) {
-            SetReticle(defaultReticle);
+            SetReticle("DefaultReticle");
         }
     }
 
@@ -57,7 +57,27 @@ public class ReticleController : MonoBehaviour
         }
     }
 
-    void SetReticle(Sprite newReticle) {
-        reticleRenderer.sprite = newReticle;
+    public void SetReticle(string reticleString) {
+        switch (reticleString){
+            case "PlantingReticle":
+                reticleRenderer.sprite = plantingReticle;
+                break;
+
+            case "NoPlantingReticle":
+                reticleRenderer.sprite = plantingBlockedReticle;
+                break;
+
+            case "WateringReticle":
+                reticleRenderer.sprite = wateringReticle;
+                break;
+
+            case "NoWateringReticle":
+                reticleRenderer.sprite = wateringBlockedReticle;
+                break;
+
+            case "DefaultReticle":
+                reticleRenderer.sprite = defaultReticle;
+                break;
+        }
     }
 }

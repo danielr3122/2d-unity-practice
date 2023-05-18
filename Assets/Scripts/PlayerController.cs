@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public GameObject plantPrefab;
     public GameObject reticle;
     public GameObject waterSource;
+    public GameObject plantingZone;
 
     public bool canPlantHere;
     public float waterCount;
@@ -80,8 +81,10 @@ public class PlayerController : MonoBehaviour
     private void UpdateSeedCannon(){
         if(seedCount > 0){
             seedCannonRenderer.sprite = loadedSeedCannonSprite;
+            plantingZone.SetActive(true);
         } else {
             seedCannonRenderer.sprite = unloadedSeedCannon;
+            plantingZone.SetActive(false);
         }
     }
 
@@ -119,16 +122,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetKey(KeyCode.E)){
-            if(reticleController.isInRange){
-                if(Input.GetMouseButtonDown(0)){
-                    if(seedCount > 0){
-                        Instantiate(plantPrefab, reticle.transform.position, plantPrefab.transform.rotation);
-                        seedCount--;
-                    }
-                }
-            }
-        }
+        // if(Input.GetKey(KeyCode.E)){
+        //     if(reticleController.isInRange){
+        //         if(Input.GetMouseButtonDown(0)){
+        //             if(seedCount > 0){
+        //                 Instantiate(plantPrefab, reticle.transform.position, plantPrefab.transform.rotation);
+        //                 seedCount--;
+        //             }
+        //         }
+        //     }
+        // }
 
         if(Input.GetKey(KeyCode.Q)){
             if(reticleController.isInRange){
